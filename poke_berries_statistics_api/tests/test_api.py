@@ -29,4 +29,4 @@ def test_berries(flask_client):
     mocked_calculate_berry_stats.assert_called_with(berries_response)
     berry_stats_response.frequency_growth_time = \
         {str(key): value for key, value in berry_stats_response.frequency_growth_time.items()}
-    assert response.json == berry_stats_response.dict()
+    assert response.json == berry_stats_response.model_dump()

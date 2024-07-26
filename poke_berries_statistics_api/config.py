@@ -1,3 +1,4 @@
+import logging
 import os
 
 from dotenv import load_dotenv
@@ -20,3 +21,21 @@ def get_calculate_time() -> bool:
 
 def get_poke_api_url() -> str:
     return os.environ.get("POKE_API_URL", "https://pokeapi.co/api/v2/berry")
+
+
+def get_logs_level() -> int:
+    level_as_str = os.environ.get("LOGS_LEVEL", "INFO")
+    if level_as_str == "DEBUG":
+        return logging.DEBUG
+    elif level_as_str == "INFO":
+        return logging.INFO
+    elif level_as_str == "WARNING":
+        return logging.WARN
+    elif level_as_str == "CRITICAL":
+        return logging.CRITICAL
+    else:
+        return logging.ERROR
+
+
+def get_reset_logs() -> bool:
+    return _string_to_bool(os.environ.get("RESET_LOGS", False))

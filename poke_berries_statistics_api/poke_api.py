@@ -1,4 +1,5 @@
 import asyncio
+import logging
 
 import aiohttp
 import requests
@@ -10,6 +11,9 @@ from poke_berries_statistics_api.schemas import BerriesNamesAndGrowthTimesSchema
 from poke_berries_statistics_api.utils import execution_time
 
 
+logger = logging.getLogger(__name__)
+
+
 def _get_poke_api_request_url(offset, limit):
     base_request_url = get_poke_api_url()
     return f"{base_request_url}?offset={offset}&limit={limit}"
@@ -19,10 +23,15 @@ async def get_berries_concurrently(results):  # pragma: no cover
     async with aiohttp.ClientSession() as session:
         tasks = []
         for result in results:
+            logger.debug(f"Calling {result[URL]}")
             berry_response = await session.get(result[URL])
-            if not berry_response.ok:
-                continue
-            tasks.append(berry_response.json())
+            if berry_response.ok:
+                tasks.append(berry_response.json())
+            else:
+                error_message = (f"An unexpected error has appeared when calling {result[URL]}."
+                                 f" The error is: {berry_response.reason}")
+                logger.error(error_message)
+                abort(berry_response.status, error_message)
 
         return await asyncio.gather(*tasks, return_exceptions=True)
 
