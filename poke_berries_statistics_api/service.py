@@ -2,7 +2,7 @@ from typing import List, Dict
 
 import numpy as np
 
-from poke_berries_statistics_api.schemas import BerryStatsResponse
+from poke_berries_statistics_api.schemas import BerryStatsResponse, BerriesNamesAndGrowthTimesSchema
 from poke_berries_statistics_api.utils import execution_time
 
 
@@ -17,7 +17,7 @@ def _calculate_frequency_growth_time(growth_times: List[int]) -> Dict[int, int]:
 
 
 @execution_time
-def calculate_berry_stats(berries) -> BerryStatsResponse:
+def calculate_berry_stats(berries: BerriesNamesAndGrowthTimesSchema) -> BerryStatsResponse:
     growth_times = berries.growth_times
     max_growth_time = max(growth_times)
     min_growth_time = min(growth_times)

@@ -10,7 +10,12 @@ from poke_berries_statistics_api.schemas import BerriesNamesAndGrowthTimesSchema
 from poke_berries_statistics_api.utils import execution_time
 
 
-async def get_berries_concurrently(results):
+def _get_poke_api_request_url(offset, limit):
+    base_request_url = get_poke_api_url()
+    return f"{base_request_url}?offset={offset}&limit={limit}"
+
+
+async def get_berries_concurrently(results):  # pragma: no cover
     async with aiohttp.ClientSession() as session:
         tasks = []
         for result in results:
@@ -23,8 +28,8 @@ async def get_berries_concurrently(results):
 
 
 def _get_berries_for_page(offset: int, limit: int) -> BerriesNamesAndGrowthTimesSchema:
-    poke_api_base_request = get_poke_api_url()
-    response = requests.get(f"{poke_api_base_request}?offset={offset}&limit={limit}")
+    poke_api_request_url = _get_poke_api_request_url(offset, limit)
+    response = requests.get(poke_api_request_url)
     if not response.ok:
         abort(response.status_code, response.reason)
 
