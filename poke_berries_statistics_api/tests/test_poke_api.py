@@ -43,7 +43,7 @@ def mocked_requests_get(*args, **kwargs):
     return MockResponse(json_data, 200)
 
 
-def test_get_berries_happy_flow():
+def test_get_berries_happy_flow(empty_cache):
     os.environ["POKE_API_PAGE_LIMIT"] = "1"
     with patch('requests.get', side_effect=mocked_requests_get):
         with patch('asyncio.run', side_effect=[
@@ -57,7 +57,7 @@ def test_get_berries_happy_flow():
     assert berries.growth_times == [1, 2, 3]
 
 
-def test_poke_api_not_ok():
+def test_poke_api_not_ok(empty_cache):
     def mocked_requests_get_not_ok(*args):
         class MockResponseNotOk:
             def __init__(self):

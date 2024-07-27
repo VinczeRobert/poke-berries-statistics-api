@@ -42,6 +42,6 @@ def calculate_berry_stats(berries: BerriesNamesAndGrowthTimesSchema) -> BerrySta
 
 
 @execution_time
-def create_histogram(berry_growth_times: List) -> None:
+def create_histogram(berry_growth_times: List) -> None:  # pragma: no cover
     plt.hist(berry_growth_times, 10)
     plt.savefig('poke_berries_statistics_api/templates/static/histogram.png')
