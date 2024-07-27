@@ -7,9 +7,9 @@ from flask import abort
 
 from poke_berries_statistics_api.config import get_poke_api_page_limit, get_poke_api_url
 from poke_berries_statistics_api.constants import RESULTS, URL, BERRY_NAME, BERRY_GROWTH_TIME
+from poke_berries_statistics_api.flask_app import cache
 from poke_berries_statistics_api.schemas import BerriesNamesAndGrowthTimesSchema
 from poke_berries_statistics_api.utils import execution_time
-
 
 logger = logging.getLogger(__name__)
 
@@ -63,6 +63,7 @@ def _get_berries_for_page(offset: int, limit: int) -> BerriesNamesAndGrowthTimes
 
 
 @execution_time
+@cache.cached(timeout=120, key_prefix='all_berries')
 def get_berries() -> BerriesNamesAndGrowthTimesSchema:
     offset = 0
     limit = get_poke_api_page_limit()

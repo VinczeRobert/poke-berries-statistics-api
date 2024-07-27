@@ -1,9 +1,13 @@
 from typing import List, Dict
 
+import matplotlib
 import numpy as np
+from matplotlib import pyplot as plt
 
 from poke_berries_statistics_api.schemas import BerryStatsResponse, BerriesNamesAndGrowthTimesSchema
 from poke_berries_statistics_api.utils import execution_time
+
+matplotlib.use('Agg')
 
 
 def _calculate_frequency_growth_time(growth_times: List[int]) -> Dict[int, int]:
@@ -35,3 +39,9 @@ def calculate_berry_stats(berries: BerriesNamesAndGrowthTimesSchema) -> BerrySta
         variance_growth_time=float(variance_growth_time),
         frequency_growth_time=frequency_growth_time
     )
+
+
+@execution_time
+def create_histogram(berry_growth_times: List) -> None:
+    plt.hist(berry_growth_times, 10)
+    plt.savefig('poke_berries_statistics_api/templates/static/histogram.png')
