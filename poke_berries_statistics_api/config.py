@@ -39,3 +39,7 @@ def get_logs_level() -> int:
 
 def get_reset_logs() -> bool:
     return _string_to_bool(os.environ.get("RESET_LOGS", False))
+
+
+def get_caching_dir() -> str:
+    return os.environ.get("CACHING_DIR", './cache_files')

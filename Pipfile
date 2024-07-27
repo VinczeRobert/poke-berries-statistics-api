@@ -33,6 +33,8 @@ urllib3 = "==2.2.2"
 virtualenv = "==20.26.3"
 werkzeug = "==3.0.3"
 yarl = "==1.9.4"
+cachelib = "==0.9.0"
+flask-caching = "==2.3.0"
 
 [dev-packages]
 coverage = "==7.6.0"
