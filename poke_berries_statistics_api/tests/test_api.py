@@ -1,9 +1,9 @@
 from unittest.mock import Mock, patch
 
-from poke_berries_statistics_api.schemas import BerryStatsResponse, BerriesNamesAndGrowthTimesSchema
+from poke_berries_statistics_api.app.schemas import BerriesNamesAndGrowthTimesSchema, BerryStatsResponse
 
 
-def test_get_all_berry_stats(flask_client):
+def test_get_all_berry_stats(flask_client, empty_cache):
     berries_response = BerriesNamesAndGrowthTimesSchema(
         names=["berry 1", "berry 2", "berry 3"],
         growth_times=[3, 18, 3]
@@ -18,9 +18,9 @@ def test_get_all_berry_stats(flask_client):
         frequency_growth_time={3: 1, 6: 1, 18: 1}
     )
 
-    with patch('poke_berries_statistics_api.api.get_berries',
+    with patch('poke_berries_statistics_api.app.api.get_berries',
                side_effect=Mock(return_value=berries_response)) as mocked_get_berries:
-        with patch('poke_berries_statistics_api.api.calculate_berry_stats',
+        with patch('poke_berries_statistics_api.app.api.calculate_berry_stats',
                    side_effect=Mock(return_value=berry_stats_response)) as mocked_calculate_berry_stats:
             response = flask_client.get('/allBerryStats')
 
@@ -32,15 +32,15 @@ def test_get_all_berry_stats(flask_client):
     assert response.json == berry_stats_response.model_dump()
 
 
-def test_get_histogram(flask_client):
+def test_get_histogram(flask_client, empty_cache):
     berries_response = BerriesNamesAndGrowthTimesSchema(
         names=["berry 1", "berry 2", "berry 3"],
         growth_times=[3, 18, 3]
     )
 
-    with patch('poke_berries_statistics_api.api.get_berries',
+    with patch('poke_berries_statistics_api.app.api.get_berries',
                side_effect=Mock(return_value=berries_response)) as mocked_get_berries:
-        with patch('poke_berries_statistics_api.api.create_histogram',
+        with patch('poke_berries_statistics_api.app.api.create_histogram',
                    side_effect=Mock()) as mocked_calculate_berry_stats:
             response = flask_client.get('/histogram')
 

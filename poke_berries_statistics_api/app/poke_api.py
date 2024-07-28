@@ -5,11 +5,11 @@ import aiohttp
 import requests
 from flask import abort
 
-from poke_berries_statistics_api.config import get_poke_api_page_limit, get_poke_api_url
-from poke_berries_statistics_api.constants import RESULTS, URL, BERRY_NAME, BERRY_GROWTH_TIME
-from poke_berries_statistics_api.flask_app import cache
-from poke_berries_statistics_api.schemas import BerriesNamesAndGrowthTimesSchema
-from poke_berries_statistics_api.utils import execution_time
+from poke_berries_statistics_api.app.config import get_poke_api_page_limit, get_poke_api_url
+from poke_berries_statistics_api.app.constants import RESULTS, URL, BERRY_NAME, BERRY_GROWTH_TIME
+from poke_berries_statistics_api.app.flask_app import cache
+from poke_berries_statistics_api.app.schemas import BerriesNamesAndGrowthTimesSchema
+from poke_berries_statistics_api.app.utils import execution_time
 
 logger = logging.getLogger(__name__)
 

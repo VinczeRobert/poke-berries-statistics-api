@@ -4,8 +4,8 @@ from unittest.mock import patch
 import pytest
 import werkzeug
 
-from poke_berries_statistics_api.config import get_poke_api_url
-from poke_berries_statistics_api.poke_api import get_berries
+from poke_berries_statistics_api.app.config import get_poke_api_url
+from poke_berries_statistics_api.app.poke_api import get_berries
 
 
 class MockResponse:

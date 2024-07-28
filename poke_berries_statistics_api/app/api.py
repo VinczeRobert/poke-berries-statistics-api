@@ -3,10 +3,10 @@ import logging
 from flask import make_response, render_template
 from waitress import serve
 
-from poke_berries_statistics_api.flask_app import app, cache
-from poke_berries_statistics_api.poke_api import get_berries
-from poke_berries_statistics_api.service import calculate_berry_stats, create_histogram
-from poke_berries_statistics_api.utils import setup_logging
+from poke_berries_statistics_api.app.flask_app import app, cache
+from poke_berries_statistics_api.app.poke_api import get_berries
+from poke_berries_statistics_api.app.service import calculate_berry_stats, create_histogram
+from poke_berries_statistics_api.app.utils import setup_logging
 
 setup_logging()
 logger = logging.getLogger(__name__)

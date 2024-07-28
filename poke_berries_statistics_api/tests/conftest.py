@@ -3,8 +3,8 @@ import shutil
 
 import pytest
 
-from poke_berries_statistics_api.api import app
-from poke_berries_statistics_api.config import get_caching_dir
+from poke_berries_statistics_api.app.config import get_caching_dir
+from poke_berries_statistics_api.app.flask_app import app
 
 
 @pytest.fixture(scope='session')

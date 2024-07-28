@@ -5,8 +5,8 @@ import matplotlib
 import numpy as np
 from matplotlib import pyplot as plt
 
-from poke_berries_statistics_api.schemas import BerryStatsResponse, BerriesNamesAndGrowthTimesSchema
-from poke_berries_statistics_api.utils import execution_time
+from poke_berries_statistics_api.app.schemas import BerryStatsResponse, BerriesNamesAndGrowthTimesSchema
+from poke_berries_statistics_api.app.utils import execution_time
 
 matplotlib.use('Agg')
 

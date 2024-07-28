@@ -33,10 +33,10 @@ def get_logs_level() -> int:
         return logging.INFO
     elif level_as_str == "WARNING":
         return logging.WARN
-    elif level_as_str == "CRITICAL":
-        return logging.CRITICAL
-    else:
+    elif level_as_str == "ERROR":
         return logging.ERROR
+    else:
+        return logging.CRITICAL
 
 
 def get_reset_logs() -> bool:
@@ -44,4 +44,4 @@ def get_reset_logs() -> bool:
 
 
 def get_caching_dir() -> str:
-    return os.environ.get("CACHING_DIR", './cache_files')
+    return os.environ.get("CACHING_DIR", 'cache_files')

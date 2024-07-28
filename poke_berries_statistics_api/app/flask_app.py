@@ -1,7 +1,7 @@
 from flask import Flask
 from flask_caching import Cache
 
-from poke_berries_statistics_api.config import get_caching_dir
+from poke_berries_statistics_api.app.config import get_caching_dir
 
 config = {
     "CACHE_TYPE": "FileSystemCache",

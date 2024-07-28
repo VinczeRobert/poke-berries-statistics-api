@@ -2,7 +2,7 @@ import logging
 import time
 from functools import wraps
 
-from poke_berries_statistics_api.config import get_calculate_time, get_logs_level, get_reset_logs
+from poke_berries_statistics_api.app.config import get_calculate_time, get_logs_level, get_reset_logs
 
 logger = logging.getLogger(__name__)
 

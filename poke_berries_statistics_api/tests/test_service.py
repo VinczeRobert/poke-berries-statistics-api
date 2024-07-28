@@ -1,7 +1,7 @@
 import pytest
 
-from poke_berries_statistics_api.schemas import BerriesNamesAndGrowthTimesSchema, BerryStatsResponse
-from poke_berries_statistics_api.service import calculate_berry_stats
+from poke_berries_statistics_api.app.service import calculate_berry_stats
+from poke_berries_statistics_api.app.schemas import BerriesNamesAndGrowthTimesSchema, BerryStatsResponse
 
 
 def _get_test_data_1():
