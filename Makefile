@@ -9,4 +9,4 @@ reset:
 
 .PHONY: run
 run: build
-	docker run -d -p 8080:8080 --restart always --name poke-berries-stats-api poke-berries-stats-api
+	docker run -d -p 8080:8080 -e PYTHONPATH='.' --restart always --name poke-berries-stats-api poke-berries-stats-api
