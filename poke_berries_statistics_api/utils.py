@@ -27,6 +27,7 @@ def setup_logging():
     level = get_logs_level()
     filemode = 'w' if get_reset_logs() else 'a'
     logs_format = '%(name)s:%(levelname)s:%(asctime)s:%(message)s'
-    logging.basicConfig(level=level, filename='poke_berries_statistics.log', filemode=filemode, format=logs_format)
+    logging.basicConfig(level=level, filename='poke_berries_statistics.log', filemode=filemode,
+                        format=logs_format)
     werkzeug_logger = logging.getLogger("werkzeug")
     werkzeug_logger.setLevel(logging.ERROR)

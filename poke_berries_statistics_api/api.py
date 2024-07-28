@@ -1,6 +1,7 @@
 import logging
 
 from flask import make_response, render_template
+from waitress import serve
 
 from poke_berries_statistics_api.flask_app import app, cache
 from poke_berries_statistics_api.poke_api import get_berries
@@ -32,3 +33,7 @@ def get_histogram():
     create_histogram(berries.growth_times)
     logger.info("GET /histogram endpoint successfully completed.")
     return render_template('histogram.html')
+
+
+if __name__ == "__main__":
+    serve(app, host='0.0.0.0', port=8080)

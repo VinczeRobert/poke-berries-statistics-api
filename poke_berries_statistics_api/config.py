@@ -7,6 +7,8 @@ load_dotenv()
 
 
 def _string_to_bool(string):
+    if isinstance(string, bool):
+        return string
     string = string.lower()
     return True if string in ['true', '1', 'y', 'yes'] else False
 

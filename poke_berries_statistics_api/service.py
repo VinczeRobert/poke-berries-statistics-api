@@ -1,3 +1,4 @@
+import os
 from typing import List, Dict
 
 import matplotlib
@@ -44,4 +45,5 @@ def calculate_berry_stats(berries: BerriesNamesAndGrowthTimesSchema) -> BerrySta
 @execution_time
 def create_histogram(berry_growth_times: List) -> None:  # pragma: no cover
     plt.hist(berry_growth_times, 10)
-    plt.savefig('poke_berries_statistics_api/templates/static/histogram.png')
+    path_to_save = os.path.join(os.path.dirname(os.path.realpath(__file__)), 'templates/static/histogram.png')
+    plt.savefig(path_to_save)
