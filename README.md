@@ -37,12 +37,18 @@ Tests can also be run with code coverage by using
 `pytest --cov=poke_berries_statistics_api poke_berries_statistics_api/tests/ --cov-config .coveragearc`.
 
 Last, but not least, there are a few environmental variables that can be configured in the .env file:
+
 POKE_API_PAGE_LIMIT - its selection can impact the speed of obtaining all the berries from poke-api
+
 CALCULATE_TIME - if set to True the execution time for some functions will be saved to the log file
+
 POKE_API_URL - URL of poke api; should only be changed if the developers of poke api upgrade it with a new version or
 change it for any reason in the future.
+
 LOGS_LEVEL - for minimum level of logs recorded; should be one of DEBUG, INFO, WARNING, ERROR or CRITICAL.
+
 RESET_LOGS - if False, the log file will not be reset when the app is running
+
 CACHING_DIR - directory for caching used by flask_caching
 
 Some future improvement ideas:
