@@ -9,9 +9,14 @@ calculates statistics based on their growth time:
 - mean growth time
 - frequency of growth times
 
-There are two endpoints:
+Endpoints:
+
+**/** (GET) - home page with a welcome message
+
 **/allBerryStats (GET)** - gets the name of all berries and the statistics mentioned above
+
 **/histogram (GET)** - create a histogram for the growth times
+
 
 The application is currently deployed to Oracle Cloud Platform and can be accessed at http://158.180.60.63:8080/.
 

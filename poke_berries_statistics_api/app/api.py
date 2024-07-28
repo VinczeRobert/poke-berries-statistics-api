@@ -12,6 +12,11 @@ setup_logging()
 logger = logging.getLogger(__name__)
 
 
+@app.route("/", methods=['GET'])
+def get_base_page():
+    return render_template('index.html')
+
+
 @app.route("/allBerryStats", methods=['GET'])
 @cache.cached(timeout=120)
 def get_all_berry_stats():
